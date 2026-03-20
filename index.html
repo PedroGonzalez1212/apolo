@@ -3,57 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apolo Producciones</title>
+  <title>Apolo Producciones — Productora de Eventos en Córdoba</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Apolo Producciones es una productora de eventos en Córdoba. Recibidas universitarias, fiestas sociales, sunsets, eventos corporativos y masivos. Música, producción e identidad." />
+  <meta name="keywords" content="productora eventos Córdoba, recibidas universitarias, fiestas, eventos masivos, sunset party, Apolo Producciones" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Apolo Producciones — No organizamos eventos. Creamos experiencias." />
+  <meta property="og:description" content="Productora de eventos sociales y masivos en Córdoba. Música. Producción. Identidad." />
+  <meta property="og:image"       content="./front/img/fiesta/IMG_3555.JPG" />
+  <meta property="og:url"         content="https://apolo.com.ar" />
+  <meta property="og:locale"      content="es_AR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Apolo Producciones" />
+  <meta name="twitter:description" content="No organizamos eventos. Creamos experiencias." />
+  <meta name="twitter:image"       content="./front/img/fiesta/IMG_3555.JPG" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./front/img/logos/OJO APOLO.PNG" type="image/x-icon" />
+
+  <!-- Preload fuentes críticas -->
+  <link rel="preload" href="./front/fonts/neue-helvetica-75-bold.otf"   as="font" type="font/otf"        crossorigin="anonymous" />
+  <link rel="preload" href="./front/fonts/europa-grotesk-sh-bold.otf"   as="font" type="font/otf"        crossorigin="anonymous" />
+
+  <!-- Preload imagen hero (above the fold) -->
+  <link rel="preload" href="./front/img/fiesta/IMG_3555.JPG" as="image" />
+
   <link rel="stylesheet" href="styles.css" />
-  <link rel="shortcut icon" href="./front/img/logos/OJO APOLO.PNG" type="image/x-icon">
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="nav" id="mainNav">
     <a href="#" class="nav__logo">
-      <img src="./front/img/logos/APOLO 2026 LOGO.PNG" alt="">
+      <img src="./front/img/logos/APOLO 2026 LOGO.PNG" alt="Apolo Producciones" width="180" height="90" />
     </a>
     <ul class="nav__links">
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#eventos">Eventos</a></li>
-      <li><a href="#espacios">Espacios</a></li>
+      <li><a href="#formatos">Espacios</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#artistas">Artistas</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#seguridad">Seguridad</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="nav__right">
-      <a href="https://instagram.com/apolo.socialclub/" target="_blank" class="nav__ig">@apolo.socialclub</a>
+      <a href="https://instagram.com/apolo.productora/" target="_blank" rel="noopener noreferrer" class="nav__ig">@apolo.productora</a>
     </div>
-    <button class="nav__hamburger" id="hamburger" aria-label="Abrir menú">
+    <button class="nav__hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
   <!-- MENÚ MOBILE -->
-  <div class="nav__mobile" id="mobileMenu">
+  <div class="nav__mobile" id="mobileMenu" role="navigation" aria-label="Menú móvil">
     <a href="#nosotros">Nosotros</a>
     <a href="#eventos">Eventos</a>
-    <a href="#espacios">Espacios</a>
+    <a href="#formatos">Espacios</a>
     <a href="#galeria">Galería</a>
     <a href="#artistas">Artistas</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#seguridad">Seguridad</a>
     <a href="#contacto">Contacto</a>
-    <a href="https://instagram.com/apolo.productora" target="_blank">@apolo.productora</a>
+    <a href="https://instagram.com/apolo.productora" target="_blank" rel="noopener noreferrer">@apolo.productora</a>
     <a href="#contacto" class="nav__cta">Cotizá tu evento</a>
   </div>
 
   <!-- HERO -->
-  <section class="hero" id="inicio">
+  <section class="hero" id="inicio" aria-label="Inicio">
 
-    <!-- Imagen de fondo full screen -->
     <div class="hero__bg">
-      <img src="./front/img/fiesta/IMG_3555.JPG" alt="">
-    <div class="hero__overlay"></div>
+      <!-- No lazy en hero: above the fold -->
+      <img src="./front/img/fiesta/hero.JPG" alt="Evento Apolo Producciones" width="1920" height="1080" fetchpriority="high" />
+      <div class="hero__overlay"></div>
     </div>
 
-    <!-- Contenido sobre la imagen -->
     <div class="hero__content">
-      <p class="hero__label">Córdoba · Argentina </p>
+      <p class="hero__label">Córdoba · Argentina</p>
       <h1 class="hero__title">
         <span>No organizamos</span>
         <span class="accent-red">eventos.</span>
@@ -72,7 +104,7 @@
     </div>
 
     <!-- Stats -->
-    <div class="hero__stats">
+    <div class="hero__stats" aria-live="polite">
       <div class="hero__stat">
         <span class="hero__stat-num" data-count="100" data-prefix="+">+100</span>
         <span class="hero__stat-label">Eventos</span>
@@ -87,29 +119,19 @@
       </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="hero__scroll" aria-hidden="true">
-      <div class="hero__scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-
   </section>
+
   <!-- QUIÉNES SOMOS -->
-  <section class="about" id="nosotros">
-  
+  <section class="about" id="nosotros" aria-label="Quiénes somos">
     <div class="about__inner">
-  
-      <!-- Columna izquierda: texto -->
+
       <div class="about__text">
-  
         <p class="about__label reveal">Quiénes somos</p>
-  
         <h2 class="about__title reveal">
           Creamos<br>
           <span class="accent-red">momentos</span><br>
           que perduran.
         </h2>
-  
         <p class="about__body reveal">
           Apolo Producciones es una productora de eventos de Córdoba dedicada a crear 
           experiencias únicas a través de la música, la producción y el diseño de ambientes. 
@@ -117,32 +139,27 @@
           combinando infraestructura profesional, curaduría musical y una fuerte identidad 
           estética.
         </p>
-  
         <p class="about__body reveal">
           Cada evento de Apolo está pensado para generar algo más que una fiesta.
         </p>
-  
         <p class="about__quote reveal">
           una experiencia que se recuerda.
         </p>
-  
       </div>
-  
-      <!-- Columna derecha: imagen -->
+
       <div class="about__image reveal">
-        <!-- Reemplazá el src con tu foto real del equipo -->
-        <img src="assets/equipo.jpg" alt="Equipo Apolo Producciones" />
+        <!-- Ruta corregida: unificada bajo ./front/img/ -->
+        <img src="./front/img/equipo.jpg" alt="Equipo Apolo Producciones" loading="lazy" width="800" height="680" />
         <div class="about__image-tag">Córdoba · Argentina</div>
       </div>
-    
+
     </div>
-    
   </section>
-    <!-- TIPOS DE EVENTO -->
-  <section class="events" id="eventos">
-  
+
+  <!-- TIPOS DE EVENTO -->
+  <section class="events" id="eventos" aria-label="Tipos de evento">
     <div class="events__inner">
-  
+
       <div class="events__header">
         <p class="events__label reveal">Tipos de evento</p>
         <h2 class="events__title reveal">
@@ -150,47 +167,40 @@
           <span class="accent-red">una producción.</span>
         </h2>
       </div>
-  
+
       <div class="events__grid">
-  
         <div class="events__card reveal">
           <span class="events__card-num">01</span>
           <h3 class="events__card-name">Recibidas universitarias</h3>
         </div>
-  
         <div class="events__card reveal">
           <span class="events__card-num">02</span>
           <h3 class="events__card-name">Fiestas sociales y privadas</h3>
         </div>
-  
         <div class="events__card reveal">
           <span class="events__card-num">03</span>
           <h3 class="events__card-name">Sunset parties</h3>
         </div>
-  
         <div class="events__card reveal">
           <span class="events__card-num">04</span>
           <h3 class="events__card-name">Eventos corporativos</h3>
         </div>
-  
         <div class="events__card reveal">
           <span class="events__card-num">05</span>
           <h3 class="events__card-name">Eventos masivos</h3>
         </div>
-  
         <div class="events__card reveal">
           <span class="events__card-num">06</span>
           <h3 class="events__card-name">Producciones temáticas</h3>
         </div>
-  
       </div>
-  
+
     </div>
-  
   </section>
+
   <!-- FORMATOS -->
-  <section class="formats" id="formatos">
-  
+  <section class="formats" id="formatos" aria-label="Formatos de evento">
+
     <div class="formats__header">
       <p class="formats__label reveal">Formatos</p>
       <h2 class="formats__title reveal">
@@ -198,13 +208,12 @@
         <span class="accent-red">una experiencia.</span>
       </h2>
     </div>
-  
+
     <div class="formats__split">
-  
-      <!-- Outdoor -->
+
       <div class="formats__panel">
         <div class="formats__bg">
-          <img src="./front/img/formatos/outdoor.JPG" alt="Outdoor" />
+          <img src="./front/img/formatos/outdoor.JPG" alt="Eventos outdoor al aire libre" loading="lazy" width="960" height="820" />
           <div class="formats__overlay"></div>
         </div>
         <div class="formats__content reveal">
@@ -216,11 +225,10 @@
           </p>
         </div>
       </div>
-  
-      <!-- Indoor -->
+
       <div class="formats__panel">
         <div class="formats__bg">
-          <img src="./front/img/formatos/indoor.jpg" alt="Indoor" />
+          <img src="./front/img/formatos/indoor.jpg" alt="Eventos indoor bajo techo" loading="lazy" width="960" height="820" />
           <div class="formats__overlay"></div>
         </div>
         <div class="formats__content reveal">
@@ -232,15 +240,15 @@
           </p>
         </div>
       </div>
-  
+
     </div>
-  
+
   </section>
+
   <!-- ESPACIOS / PREDIOS -->
-  <section class="spaces" id="espacios">
-  
+  <section class="spaces" id="espacios" aria-label="Nuestros espacios">
     <div class="spaces__inner">
-  
+
       <div class="spaces__header">
         <p class="spaces__label reveal">Nuestros espacios</p>
         <h2 class="spaces__title reveal">
@@ -252,9 +260,8 @@
           producciones de diferentes escalas.
         </p>
       </div>
-  
+
       <div class="spaces__grid">
-  
         <div class="spaces__card reveal">
           <span class="spaces__card-num">01</span>
           <div class="spaces__card-body">
@@ -265,7 +272,6 @@
             </p>
           </div>
         </div>
-  
         <div class="spaces__card reveal">
           <span class="spaces__card-num">02</span>
           <div class="spaces__card-body">
@@ -276,7 +282,6 @@
             </p>
           </div>
         </div>
-  
         <div class="spaces__card reveal">
           <span class="spaces__card-num">03</span>
           <div class="spaces__card-body">
@@ -287,7 +292,6 @@
             </p>
           </div>
         </div>
-  
         <div class="spaces__card reveal">
           <span class="spaces__card-num">04</span>
           <div class="spaces__card-body">
@@ -298,12 +302,296 @@
             </p>
           </div>
         </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ============================================================
+  GALERÍA
+  ============================================================ -->
+  
+  <section class="gallery" id="galeria" aria-label="Galería">
+    <div class="gallery__header">
+      <p class="gallery__label reveal">Galería</p>
+      <h2 class="gallery__title reveal">
+        Eventos que<br>
+        <span class="accent-red">hablan solos.</span>
+      </h2>
+    </div>
+  
+    <div class="gallery__masonry">
+  
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-1.jpg" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+  
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-2.jpg" alt="Evento Apolo Producciones" loading="lazy" width="800" height="1000" />
+      </div>
+  
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-3.jpg" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+  
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-4.jpg" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
+      </div>
+  
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-5.jpg" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+  
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-6.png" alt="Evento Apolo Producciones" loading="lazy" width="800" height="1000" />
+      </div>
+  
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-7.png" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+  
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-8.png" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
+      </div>
+
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-9.png" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
+      </div>
+  
+    </div>
+  </section>
+  <!-- ============================================================
+  ARTISTAS
+  ============================================================ -->
+  
+  <section class="artists" id="artistas" aria-label="Artistas">
+    <div class="artists__inner">
+  
+      <div class="artists__text">
+        <p class="artists__label reveal">Artistas</p>
+        <h2 class="artists__title reveal">
+          La música,<br>
+          <span class="accent-red">nuestro pilar.</span>
+        </h2>
+        <p class="artists__body reveal">
+          La música es uno de los pilares de nuestras producciones. Trabajamos con 
+          DJs locales y artistas invitados, generando una propuesta musical acorde 
+          a la identidad de cada evento.
+        </p>
+      </div>
+  
+      <div class="artists__image reveal">
+        <img src="./front/img/fiesta/imagen-8.png" alt="Artistas Apolo Producciones" loading="lazy" width="800" height="560" />
+      </div>
+  
+    </div>
+  </section>
+  <!-- ============================================================
+  EXPERIENCIA APOLO
+  ============================================================ -->
+  
+  <section class="experience" id="experiencia" aria-label="Experiencia Apolo">
+    <div class="experience__inner">
+  
+      <div class="experience__header">
+        <p class="experience__label reveal">Experiencia Apolo</p>
+        <h2 class="experience__title reveal">
+          Lo que nos<br>
+          <span class="accent-red">diferencia.</span>
+        </h2>
+      </div>
+  
+      <ol class="experience__list" aria-label="Pilares de la experiencia Apolo">
+  
+        <li class="experience__item reveal">
+          <span class="experience__num">01</span>
+          <h3 class="experience__name">Conceptos visuales fuertes</h3>
+        </li>
+  
+        <li class="experience__item reveal">
+          <span class="experience__num">02</span>
+          <h3 class="experience__name">Producción técnica profesional</h3>
+        </li>
+  
+        <li class="experience__item reveal">
+          <span class="experience__num">03</span>
+          <h3 class="experience__name">Ambientación cuidada</h3>
+        </li>
+  
+        <li class="experience__item reveal">
+          <span class="experience__num">04</span>
+          <h3 class="experience__name">Curaduría musical</h3>
+        </li>
+  
+        <li class="experience__item reveal">
+          <span class="experience__num">05</span>
+          <h3 class="experience__name">Experiencias pensadas para el público</h3>
+        </li>
+  
+      </ol>
+  
+    </div>
+  </section>
+  <!-- ============================================================
+  SEGURIDAD Y ORGANIZACIÓN 
+  ============================================================ -->
+  
+  <section class="security" id="seguridad" aria-label="Seguridad y organización">
+    <div class="security__inner">
+  
+      <div class="security__header">
+        <p class="security__label reveal">Seguridad y organización</p>
+        <h2 class="security__title reveal">
+          Tu evento,<br>
+          <span class="accent-red">en buenas manos.</span>
+        </h2>
+      </div>
+  
+      <div class="security__grid">
+  
+        <div class="security__item reveal">
+          <div class="security__icon" aria-hidden="true">
+            <!-- Escudo -->
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 3L4 8v8c0 7 5.4 13.5 12 15 6.6-1.5 12-8 12-15V8L16 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M11 16l3.5 3.5L21 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="security__name">Seguridad privada habilitada</h3>
+        </div>
+  
+        <div class="security__item reveal">
+          <div class="security__icon" aria-hidden="true">
+            <!-- Persona con check -->
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="9" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 27c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M20 20l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="security__name">Personal de control de acceso</h3>
+        </div>
+  
+        <div class="security__item reveal">
+          <div class="security__icon" aria-hidden="true">
+            <!-- Cruz médica -->
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="13" y="4" width="6" height="24" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="4" y="13" width="24" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3 class="security__name">Paramédicos</h3>
+        </div>
+  
+        <div class="security__item reveal">
+          <div class="security__icon" aria-hidden="true">
+            <!-- Clipboard / organización -->
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="7" y="6" width="18" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 6V5a1 1 0 011-1h6a1 1 0 011 1v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M11 13h10M11 18h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="security__name">Organización profesional</h3>
+        </div>
   
       </div>
   
     </div>
-  
   </section>
+  
+  
+  <!-- ============================================================
+    CONTACTO 
+  ============================================================ -->
+  
+  <section class="contact" id="contacto" aria-label="Contacto">
+    <div class="contact__inner">
+  
+      <div class="contact__text">
+        <p class="contact__label reveal">Contacto</p>
+        <h2 class="contact__title reveal">
+          ¿Tenés un<br>
+          <span class="accent-red">evento en mente?</span>
+        </h2>
+        <p class="contact__body reveal">
+          Apolo Producciones · Córdoba, Argentina
+        </p>
+      </div>
+  
+      <div class="contact__action reveal">
+        <a
+          href="https://www.instagram.com/apolo.socialclub/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact__ig-btn"
+          aria-label="Contactar a Apolo Producciones por Instagram"
+        >
+          <!-- Ícono Instagram -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+          @apolo.socialclub
+        </a>
+      </div>
+  
+    </div>
+  </section>
+  <!-- ============================================================
+  FOOTER 
+  ============================================================ -->
+  
+  <footer class="footer" aria-label="Pie de página">
+  
+    <!-- Fila superior: logo + links + instagram -->
+    <div class="footer__top">
+      <a href="#" class="footer__logo" aria-label="Apolo Producciones — inicio">
+        <img src="./front/img/logos/APOLO 2026 LOGO.PNG" alt="Apolo Producciones" width="180" height="90" loading="lazy" />
+      </a>
+  
+      <nav class="footer__nav" aria-label="Navegación footer">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#espacios">Formatos</a>
+        <a href="#espacios">Espacios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#artistas">Artistas</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#seguridad">Seguridad</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+  
+      <a
+        href="https://instagram.com/apolo.socialclub"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer__ig"
+        aria-label="Instagram de Apolo Producciones"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+        </svg>
+        @apolo.socialclub
+      </a>
+    </div>
+  
+    <!-- Divisor -->
+    <div class="footer__divider" aria-hidden="true"></div>
+  
+    <!-- Fila inferior: copyright + punto.lab -->
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 Apolo Producciones · Córdoba, Argentina</p>
+      <p class="footer__dev">
+        Diseño y desarrollo
+        <a href="#" class="footer__dev-link" target="_blank" rel="noopener noreferrer">punto.lab</a>
+      </p>
+    </div>
+  
+  </footer>
+
   <script src="main.js"></script>
 </body>
 </html>

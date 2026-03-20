@@ -1,4 +1,3 @@
-
 /* ============================================================
   APOLO PRODUCCIONES — main.js
 ============================================================ */
@@ -19,6 +18,7 @@ window.addEventListener('scroll', () => {
 hamburger.addEventListener('click', () => {
   const open = hamburger.classList.toggle('is-open');
   mobileMenu.classList.toggle('is-open', open);
+  hamburger.setAttribute('aria-expanded', open);
   document.body.style.overflow = open ? 'hidden' : '';
 });
 
@@ -26,8 +26,20 @@ mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('is-open');
     mobileMenu.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   });
+});
+
+/* Cerrar menú con Escape */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+    hamburger.classList.remove('is-open');
+    mobileMenu.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    hamburger.focus();
+  }
 });
 
 
@@ -37,48 +49,62 @@ mobileMenu.querySelectorAll('a').forEach(link => {
 
 const progressBar = document.createElement('div');
 progressBar.id = 'scroll-progress';
+progressBar.setAttribute('role', 'progressbar');
+progressBar.setAttribute('aria-hidden', 'true');
 document.body.appendChild(progressBar);
 
 window.addEventListener('scroll', () => {
-  const scrollTop    = window.scrollY;
-  const docHeight    = document.documentElement.scrollHeight - window.innerHeight;
-  const pct          = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  const scrollTop  = window.scrollY;
+  const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+  const pct        = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
   progressBar.style.width = pct + '%';
 }, { passive: true });
 
 
 /* ============================================================
   CURSOR PERSONALIZADO
+  Con requestAnimationFrame para mayor fluidez en 120Hz+
 ============================================================ */
 
-const cursor = document.createElement('div');
-cursor.id = 'cursor';
-document.body.appendChild(cursor);
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
-let mouseX = -100, mouseY = -100;
+if (!prefersReducedMotion && !isTouchDevice) {
+  const cursor = document.createElement('div');
+  cursor.id = 'cursor';
+  document.body.appendChild(cursor);
 
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-});
+  let mouseX = -100, mouseY = -100;
+  let rafPending = false;
 
-/* Agrandar al pasar sobre interactivos */
-const interactives = 'a, button, .btn-primary, .btn-ghost, .nav__cta';
+  function updateCursor() {
+    cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    rafPending = false;
+  }
 
-document.querySelectorAll(interactives).forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('is-hover'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('is-hover'));
-});
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!rafPending) {
+      rafPending = true;
+      requestAnimationFrame(updateCursor);
+    }
+  });
 
-/* Ocultar cuando el mouse sale de la ventana */
-document.addEventListener('mouseleave', () => cursor.classList.add('is-hidden'));
-document.addEventListener('mouseenter', () => cursor.classList.remove('is-hidden'));
+  const interactives = 'a, button, .btn-primary, .btn-ghost, .nav__cta';
+
+  document.querySelectorAll(interactives).forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('is-hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('is-hover'));
+  });
+
+  document.addEventListener('mouseleave', () => cursor.classList.add('is-hidden'));
+  document.addEventListener('mouseenter', () => cursor.classList.remove('is-hidden'));
+}
 
 
 /* ============================================================
   REVEAL AL SCROLL — fade + slide up
-  Agregar clase .reveal a cualquier elemento para animarlo
 ============================================================ */
 
 const revealEls = document.querySelectorAll('.reveal');
@@ -87,11 +113,11 @@ const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('is-visible');
-      revealObserver.unobserve(entry.target); /* animar solo una vez */
+      revealObserver.unobserve(entry.target);
     }
   });
 }, {
-  threshold: 0.15,
+  threshold: 0.1,
   rootMargin: '0px 0px -40px 0px'
 });
 
@@ -100,17 +126,23 @@ revealEls.forEach(el => revealObserver.observe(el));
 
 /* ============================================================
   CONTADOR ANIMADO EN STATS
-  Busca elementos con data-count="número"
 ============================================================ */
 
 function animateCount(el, target, duration = 1400) {
+  /* Respetar prefers-reduced-motion: mostrar número final sin animación */
+  if (prefersReducedMotion) {
+    el.textContent = target % 1 !== 0
+      ? target.toFixed(1)
+      : target.toLocaleString('es-AR');
+    return;
+  }
+
   const start     = performance.now();
   const isDecimal = target % 1 !== 0;
 
   function update(now) {
     const elapsed  = now - start;
     const progress = Math.min(elapsed / duration, 1);
-    /* ease out quart */
     const eased    = 1 - Math.pow(1 - progress, 4);
     const current  = eased * target;
 
@@ -118,10 +150,13 @@ function animateCount(el, target, duration = 1400) {
       ? current.toFixed(1)
       : Math.floor(current).toLocaleString('es-AR');
 
-    if (progress < 1) requestAnimationFrame(update);
-    else el.textContent = target % 1 !== 0
-      ? target.toFixed(1)
-      : target.toLocaleString('es-AR');
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = isDecimal
+        ? target.toFixed(1)
+        : target.toLocaleString('es-AR');
+    }
   }
 
   requestAnimationFrame(update);
@@ -136,7 +171,6 @@ const statObserver = new IntersectionObserver((entries) => {
       const prefix = entry.target.dataset.prefix || '';
       const suffix = entry.target.dataset.suffix || '';
 
-      /* Wrapeamos el número en un span para no pisar prefix/suffix */
       let numSpan = entry.target.querySelector('.count-num');
       if (!numSpan) {
         entry.target.textContent = '';
