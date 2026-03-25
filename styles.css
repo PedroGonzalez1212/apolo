@@ -43,7 +43,8 @@
 
   /* TIPOGRAFÍA */
   --font-display:   'NeueHelvetica', 'Barlow condensed', sans-serif;
-  --font-body:      'EuropaGrotesk', 'Barlow', sans-serif;
+  --font-body:      'Barlow', 'EuropaGrotesk', sans-serif;
+  --font-thin: 'Barlow', sans-serif;
 
   /* ESPACIADO */
   --space-xs:   0.5rem;
@@ -310,7 +311,6 @@ button {
   object-fit: cover;
   object-position: center;
   display: block;
-  opacity: 0.45;
 }
 
 .hero__overlay {
@@ -319,7 +319,6 @@ button {
   background:
     linear-gradient(to top,  rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.55) 45%, rgba(10,10,10,0.15) 100%),
     linear-gradient(to right, rgba(10,10,10,0.45) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 70% 35%, rgba(26,58,232,0.16) 0%, transparent 70%),
     radial-gradient(ellipse 40% 40% at 15% 65%, rgba(224,32,32,0.12) 0%, transparent 60%);
 }
 
@@ -1273,18 +1272,40 @@ button {
   max-width: 480px;
 }
 
+.artists__image {
+  position: relative;
+  overflow: hidden;
+}
+
 .artists__image img {
   width: 100%;
   height: clamp(380px, 50vw, 620px);
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
   display: block;
-  filter: grayscale(20%);
-  transition: filter 0.4s ease;
+  filter: grayscale(10%) brightness(0.85);
+  transition: transform 0.6s var(--ease), filter 0.5s ease;
 }
 
 .artists__image:hover img {
-  filter: grayscale(0%);
+  transform: scale(1.04);
+  filter: grayscale(0%) brightness(0.75);
+}
+
+.artists__image-tag {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(8px);
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 800px) {
@@ -1480,6 +1501,45 @@ button {
 .gallery__item:hover img {
   transform: scale(1.04);
   filter: grayscale(0%) brightness(1);
+}
+
+/* ============================================================
+  GALERÍA — VER MÁS
+============================================================ */
+
+.gallery__item--extra {
+  display: none;
+}
+
+.gallery__item--extra.is-visible {
+  display: block;
+}
+
+.gallery__more {
+  display: flex;
+  justify-content: center;
+  padding: clamp(2.5rem, 5vh, 4rem) var(--pad-h) 0;
+}
+
+.gallery__btn {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.9rem 2.5rem;
+  border-radius: var(--radius-sm);
+  min-height: 44px;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.gallery__btn:hover {
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--black);
+  transform: translateY(-2px);
 }
 
 /* Responsive */
@@ -1857,4 +1917,36 @@ button {
     align-items: flex-start;
     gap: 0.5rem;
   }
+}
+
+/* ============================================================
+  JUSTIFICADO Y FUENTE FINA
+============================================================ */
+
+/* Títulos grandes — justify */
+.hero__title,
+.about__title,
+.events__title,
+.formats__title,
+.formats__name,
+.spaces__title,
+.artists__title,
+.experience__title,
+.security__title,
+.contact__title,
+.gallery__title {
+  text-align: justify;
+}
+
+/* Párrafos de cuerpo — justify + fuente fina */
+.about__body,
+.spaces__intro,
+.spaces__card-desc,
+.artists__body,
+.formats__desc,
+.hero__tagline {
+  font-family: var(--font-thin);
+  font-weight: 200;
+  text-align: justify;
+  letter-spacing: 0.04em; /* reducido, Barlow fina no necesita tanto */
 }

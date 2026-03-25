@@ -14,7 +14,7 @@
   <meta property="og:type"        content="website" />
   <meta property="og:title"       content="Apolo Producciones — No organizamos eventos. Creamos experiencias." />
   <meta property="og:description" content="Productora de eventos sociales y masivos en Córdoba. Música. Producción. Identidad." />
-  <meta property="og:image"       content="./front/img/fiesta/IMG_3555.JPG" />
+  <meta property="og:image"       content="./front/img/fiesta/IMG_3555.webp" />
   <meta property="og:url"         content="https://apolo.com.ar" />
   <meta property="og:locale"      content="es_AR" />
 
@@ -22,17 +22,20 @@
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Apolo Producciones" />
   <meta name="twitter:description" content="No organizamos eventos. Creamos experiencias." />
-  <meta name="twitter:image"       content="./front/img/fiesta/IMG_3555.JPG" />
+  <meta name="twitter:image"       content="./front/img/fiesta/IMG_3555.webp" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="./front/img/logos/OJO APOLO.PNG" type="image/x-icon" />
+  <link rel="shortcut icon" href="./front/img/logos/OJO APOLO.webp" type="image/x-icon" />
 
   <!-- Preload fuentes críticas -->
   <link rel="preload" href="./front/fonts/neue-helvetica-75-bold.otf"   as="font" type="font/otf"        crossorigin="anonymous" />
   <link rel="preload" href="./front/fonts/europa-grotesk-sh-bold.otf"   as="font" type="font/otf"        crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300&display=swap" rel="stylesheet">
 
   <!-- Preload imagen hero (above the fold) -->
-  <link rel="preload" href="./front/img/fiesta/IMG_3555.JPG" as="image" />
+  <link rel="preload" href="./front/img/fiesta/IMG_3555.webp" as="image" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -41,20 +44,17 @@
   <!-- NAVBAR -->
   <nav class="nav" id="mainNav">
     <a href="#" class="nav__logo">
-      <img src="./front/img/logos/APOLO 2026 LOGO.PNG" alt="Apolo Producciones" width="180" height="90" />
+      <img src="./front/img/logos/APOLO 2026 LOGO.webp" alt="Apolo Producciones" width="180" height="90" />
     </a>
     <ul class="nav__links">
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#eventos">Eventos</a></li>
-      <li><a href="#formatos">Espacios</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#artistas">Artistas</a></li>
-      <li><a href="#experiencia">Experiencia</a></li>
-      <li><a href="#seguridad">Seguridad</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="nav__right">
-      <a href="https://instagram.com/apolo.productora/" target="_blank" rel="noopener noreferrer" class="nav__ig">@apolo.productora</a>
+      <a href="#contacto" class="nav__cta">Cotizá tu evento</a>
     </div>
     <button class="nav__hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
@@ -71,7 +71,7 @@
     <a href="#experiencia">Experiencia</a>
     <a href="#seguridad">Seguridad</a>
     <a href="#contacto">Contacto</a>
-    <a href="https://instagram.com/apolo.productora" target="_blank" rel="noopener noreferrer">@apolo.productora</a>
+    <a href="https://instagram.com/apolo.socialclub" target="_blank" rel="noopener noreferrer">@apolo.socialclub</a>
     <a href="#contacto" class="nav__cta">Cotizá tu evento</a>
   </div>
 
@@ -80,7 +80,7 @@
 
     <div class="hero__bg">
       <!-- No lazy en hero: above the fold -->
-      <img src="./front/img/fiesta/hero.JPG" alt="Evento Apolo Producciones" width="1920" height="1080" fetchpriority="high" />
+      <img src="./front/img/fiesta/hero-2.webp" alt="Evento Apolo Producciones" width="1920" height="1080" fetchpriority="high" />
       <div class="hero__overlay"></div>
     </div>
 
@@ -90,7 +90,7 @@
         <span>No organizamos</span>
         <span class="accent-red">eventos.</span>
         <span>Creamos</span>
-        <span class="accent-blue">experiencias.</span>
+        <span class="accent-red">experiencias.</span>
       </h1>
       <div class="hero__bottom">
         <p class="hero__tagline">
@@ -148,8 +148,7 @@
       </div>
 
       <div class="about__image reveal">
-        <!-- Ruta corregida: unificada bajo ./front/img/ -->
-        <img src="./front/img/equipo.jpg" alt="Equipo Apolo Producciones" loading="lazy" width="800" height="680" />
+        <img src="./front/img/logos/OJO APOLO.webp" alt="Equipo Apolo Producciones" loading="lazy" width="800" height="680" />
         <div class="about__image-tag">Córdoba · Argentina</div>
       </div>
 
@@ -213,7 +212,7 @@
 
       <div class="formats__panel">
         <div class="formats__bg">
-          <img src="./front/img/formatos/outdoor.JPG" alt="Eventos outdoor al aire libre" loading="lazy" width="960" height="820" />
+          <img src="./front/img/formatos/outdoor-2.webp" alt="Eventos outdoor al aire libre" loading="lazy" width="960" height="820" />
           <div class="formats__overlay"></div>
         </div>
         <div class="formats__content reveal">
@@ -228,7 +227,7 @@
 
       <div class="formats__panel">
         <div class="formats__bg">
-          <img src="./front/img/formatos/indoor.jpg" alt="Eventos indoor bajo techo" loading="lazy" width="960" height="820" />
+          <img src="./front/img/fiesta/hero-2.webp" alt="Eventos indoor bajo techo" loading="lazy" width="960" height="820" />
           <div class="formats__overlay"></div>
         </div>
         <div class="formats__content reveal">
@@ -306,10 +305,6 @@
 
     </div>
   </section>
-  <!-- ============================================================
-  GALERÍA
-  ============================================================ -->
-  
   <section class="gallery" id="galeria" aria-label="Galería">
     <div class="gallery__header">
       <p class="gallery__label reveal">Galería</p>
@@ -321,48 +316,99 @@
   
     <div class="gallery__masonry">
   
+      <!-- VISIBLES SIEMPRE (9 fotos) -->
       <div class="gallery__item reveal">
-        <img src="./front/img/fiesta/imagen-1.jpg" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+        <img src="./front/img/fiesta/imagen-2.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="1000" />
+      </div>
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-4.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
+      </div>
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-5.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-6.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="1000" />
+      </div>
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-7.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+      <div class="gallery__item reveal">
+        <img src="./front/img/carteleria/CARTELERIA APOLO 3.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-8.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
+      </div>
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-9.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
+      </div>
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-10.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+      <div class="gallery__item reveal">
+        <img src="./front/img/fiesta/imagen-11.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="1000" />
       </div>
   
-      <div class="gallery__item reveal">
-        <img src="./front/img/fiesta/imagen-2.jpg" alt="Evento Apolo Producciones" loading="lazy" width="800" height="1000" />
+      <!-- EXTRAS (imagen-12 a imagen-26) -->
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-12.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
       </div>
-  
-      <div class="gallery__item reveal">
-        <img src="./front/img/fiesta/imagen-3.jpg" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-13.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
       </div>
-  
-      <div class="gallery__item reveal">
-        <img src="./front/img/fiesta/imagen-4.jpg" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-14.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
       </div>
-  
-      <div class="gallery__item reveal">
-        <img src="./front/img/fiesta/imagen-5.jpg" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-15.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="1000" />
       </div>
-  
-      <div class="gallery__item reveal">
-        <img src="./front/img/fiesta/imagen-6.png" alt="Evento Apolo Producciones" loading="lazy" width="800" height="1000" />
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-16.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
       </div>
-  
-      <div class="gallery__item reveal">
-        <img src="./front/img/fiesta/imagen-7.png" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-17.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
       </div>
-  
-      <div class="gallery__item reveal">
-        <img src="./front/img/fiesta/imagen-8.png" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-18.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
       </div>
-
-      <div class="gallery__item reveal">
-        <img src="./front/img/fiesta/imagen-9.png" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/carteleria/CARTELERIA APOLO 4.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-19.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-20.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="1000" />
+      </div>
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-21.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
+      </div>
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-22.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-23.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
+      </div>
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-24.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="600" />
+      </div>
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-25.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="1000" />
+      </div>
+      <div class="gallery__item gallery__item--extra reveal">
+        <img src="./front/img/fiesta/imagen-26.webp" alt="Evento Apolo Producciones" loading="lazy" width="800" height="800" />
       </div>
   
     </div>
-  </section>
-  <!-- ============================================================
-  ARTISTAS
-  ============================================================ -->
   
+    <!-- BOTÓN -->
+    <div class="gallery__more">
+      <button class="gallery__btn" id="galleryBtn" aria-expanded="false">
+        Ver más
+      </button>
+    </div>
+  
+  </section>
+  <!-- ARTISTAS -->
   <section class="artists" id="artistas" aria-label="Artistas">
     <div class="artists__inner">
   
@@ -380,7 +426,7 @@
       </div>
   
       <div class="artists__image reveal">
-        <img src="./front/img/fiesta/imagen-8.png" alt="Artistas Apolo Producciones" loading="lazy" width="800" height="560" />
+        <img src="./front/img/carteleria/CARTELERIA APOLO 6.webp" alt="DJ Apolo Producciones" loading="lazy" width="800" height="560" />
       </div>
   
     </div>
@@ -547,18 +593,14 @@
     <!-- Fila superior: logo + links + instagram -->
     <div class="footer__top">
       <a href="#" class="footer__logo" aria-label="Apolo Producciones — inicio">
-        <img src="./front/img/logos/APOLO 2026 LOGO.PNG" alt="Apolo Producciones" width="180" height="90" loading="lazy" />
+        <img src="./front/img/logos/APOLO 2026 LOGO.webp" alt="Apolo Producciones" width="180" height="90" loading="lazy" />
       </a>
   
       <nav class="footer__nav" aria-label="Navegación footer">
         <a href="#nosotros">Nosotros</a>
         <a href="#eventos">Eventos</a>
-        <a href="#espacios">Formatos</a>
-        <a href="#espacios">Espacios</a>
         <a href="#galeria">Galería</a>
         <a href="#artistas">Artistas</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#seguridad">Seguridad</a>
         <a href="#contacto">Contacto</a>
       </nav>
   

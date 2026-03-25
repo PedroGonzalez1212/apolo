@@ -188,3 +188,27 @@ const statObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 statEls.forEach(el => statObserver.observe(el));
+
+/* ============================================================
+  GALERÍA — VER MÁS / VER MENOS
+============================================================ */
+
+const galleryBtn = document.getElementById('galleryBtn');
+const extraItems = document.querySelectorAll('.gallery__item--extra');
+
+if (galleryBtn) {
+  galleryBtn.addEventListener('click', () => {
+    const isOpen = galleryBtn.getAttribute('aria-expanded') === 'true';
+
+    extraItems.forEach(item => {
+      item.classList.toggle('is-visible', !isOpen);
+    });
+
+    galleryBtn.textContent = isOpen ? 'Ver más' : 'Ver menos';
+    galleryBtn.setAttribute('aria-expanded', String(!isOpen));
+
+    if (isOpen) {
+      document.getElementById('galeria').scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
