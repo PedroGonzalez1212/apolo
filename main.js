@@ -11,36 +11,44 @@ const nav        = document.getElementById('mainNav');
 const hamburger  = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('is-scrolled', window.scrollY > 50);
-}, { passive: true });
+if (nav) {
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('is-scrolled', window.scrollY > 50);
+  }, { passive: true });
+}
 
-hamburger.addEventListener('click', () => {
-  const open = hamburger.classList.toggle('is-open');
-  mobileMenu.classList.toggle('is-open', open);
-  hamburger.setAttribute('aria-expanded', open);
-  document.body.style.overflow = open ? 'hidden' : '';
-});
+if (hamburger && mobileMenu) {
 
-mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
+  function closeMenu() {
     hamburger.classList.remove('is-open');
     mobileMenu.classList.remove('is-open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
-  });
-});
-
-/* Cerrar menú con Escape */
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
-    hamburger.classList.remove('is-open');
-    mobileMenu.classList.remove('is-open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    hamburger.focus();
   }
-});
+
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('is-open');
+    mobileMenu.classList.toggle('is-open', open);
+    mobileMenu.setAttribute('aria-hidden', String(!open));
+    hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) mobileMenu.querySelector('a')?.focus();
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  /* Cerrar menú con Escape */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+      closeMenu();
+      hamburger.focus();
+    }
+  });
+
+}
 
 
 /* ============================================================

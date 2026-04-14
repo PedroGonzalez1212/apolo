@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://apolo.com.ar/sitemap.xml
