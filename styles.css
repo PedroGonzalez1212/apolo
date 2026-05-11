@@ -292,6 +292,7 @@ button {
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100svh;
   min-height: 600px;
   overflow: hidden;
   display: flex;
@@ -586,7 +587,7 @@ button {
 
 @media (max-width: 600px) {
   .hero {
-    padding-bottom: clamp(1.5rem, 5vh, 3rem);
+    padding-bottom: calc(clamp(1.5rem, 5vh, 3rem) + env(safe-area-inset-bottom, 0px));
   }
 
   .hero__title {
@@ -595,9 +596,23 @@ button {
     margin-bottom: 1.5rem;
   }
 
+  /* Permite que hero__actions se posicione relativo a .hero */
+  .hero__content {
+    position: static;
+  }
+
+  .hero__bottom {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
   .hero__actions {
+    position: absolute;
+    bottom: calc(clamp(1.5rem, 5vh, 3rem) + env(safe-area-inset-bottom, 0px));
+    left: var(--pad-h);
+    right: var(--pad-h);
     flex-direction: column;
-    width: 100%;
+    width: auto;
+    z-index: 3;
   }
 
   .btn-primary,
@@ -791,6 +806,10 @@ button {
 
   .about__image img {
     height: clamp(280px, 60vw, 420px);
+  }
+
+  .about__image-tag {
+    display: none;
   }
 
   .about__body {
@@ -1320,6 +1339,7 @@ button {
 
   .artists__image img {
     height: clamp(260px, 60vw, 400px);
+    object-position: center center;
   }
 }
 
